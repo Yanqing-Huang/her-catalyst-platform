@@ -72,6 +72,7 @@
   <button data-v="sim">🧬 仿真模拟</button>
   <button data-v="lit">📚 文献数据库</button>
   <button data-v="ana">📑 系统化分析</button>
+  <button data-v="video">🎬 实物视频</button>
   <button data-v="upload">📥 数据导入</button>
 </nav>
 <main>
@@ -217,6 +218,20 @@
       <div class="card"><h3>水热时间效应<small>各配比 η@10 随时间变化趋势</small></h3><div id="chTime" class="chart" style="height:340px"></div></div>
       <div class="card"><h3>文献分位对标<small>本实验样品在文献数据库 η@10 中的相对位置</small></h3><div id="chBench" class="chart" style="height:360px"></div></div>
       <div class="card"><h3>📄 自动分析结论</h3><div id="anaReport" class="hint" style="font-size:13px;line-height:2;white-space:pre-wrap;max-height:340px;overflow:auto"></div></div>
+    </div>
+  </section>
+
+  <!-- 实物视频 -->
+  <section id="v-video" class="view">
+    <div class="card">
+      <h3>催化剂实物与制备演示<small>泡沫镍预处理 → 水热合成 → 真空干燥 → 磷化 → 电化学测试</small></h3>
+      <video id="demoVideo" controls preload="metadata" playsinline
+        style="width:100%;max-height:72vh;border-radius:12px;background:#000;border:1px solid var(--line)"
+        src="catalyst-demo.mp4"></video>
+      <p class="hint" style="margin-top:12px">
+        本视频展示本课题泡沫镍负载过渡金属磷化物自支撑电极的实物样品与制备、测试流程。
+        对应样品：Ni-Co-P / Ni-Fe-P 系列（水热 4 h / 6 h / 8 h，多种金属摩尔配比）。
+      </p>
     </div>
   </section>
 
@@ -694,6 +709,7 @@ function copyReport(){
 
 function refresh(){renderDash();renderTable();fillSysFilter();renderScreen();renderLSVSel();renderLSV();renderLit();renderAna()}
 refresh();
+if(location.hash==='#video'){document.querySelector('nav button[data-v="video"]').click()}
 window.addEventListener('resize',()=>Object.values(charts).forEach(c=>c.resize()));
 </script>
 </body>
